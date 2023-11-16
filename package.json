@@ -1,0 +1,16 @@
+{
+  "name": "todolistproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build": "esbuild ./src/index.js --bundle --sourcemap --platform=browser --outfile=./dist/index.js",
+    "dev": "esbuild ./src/index.js --bundle --watch --sourcemap --platform=browser --outfile=./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "esbuild": "^0.19.5"
+  }
+}

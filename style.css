@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.addTodoContent {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.todoList {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.todoList {
+    margin: 0 auto;
+    border: 5px solid green;
+    height: 100px;
+    width: 300px;
+    border-radius: 3px;
+}

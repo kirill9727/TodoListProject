@@ -1,4 +1,4 @@
-import {TodoList} from "./todoListLogic";
+import {addTodo, deleteTodo, TodoList} from "./todoListLogic";
 
 
 
@@ -21,8 +21,45 @@ function renderList(listTodo) {
 }
 export function drawListTodo() {
     document.querySelector('.todoListFull').innerHTML = renderListTodo(TodoList)
-
+    initListTodo()
 }
+
+function initListTodo () {
+    const items = document.querySelectorAll('.todoList')
+    for (let item of Object.values(items)) {
+        const id = item.getAttribute('data-id')
+        const deleteBtn = item.querySelector('.delete')
+        deleteBtn.addEventListener('click', () => {
+            console.log(`удаляем id: ${id}`)
+            deleteTodo(id)
+            return drawListTodo()
+        })
+    }
+}
+
+export function initListTodoForm () {
+    const todoForm = document.querySelector('.addTodoContent')
+    const addButton = todoForm.querySelector('.addBtn')
+    const titleInput = todoForm.querySelector('.title')
+    const textInput = todoForm.querySelector('.text')
+    addButton.addEventListener('click', () => {
+        const title = titleInput.value
+        const text = textInput.value
+        console.log(`добавляем заголовок ${title}`, `добавляем текст ${text}`)
+        addTodo(title,text)
+        drawListTodo()
+    })
+}
+
+
+// document.addEventListener('click', function() {
+//     const title = document.querySelector('#title').value
+//     const text = document.querySelector('#mainContent').value
+//     let addBtn = document.querySelector('#addBtn')
+//
+// })
+
+
 
 const renderListTodo = (listTodo) => {
     return listTodo.map(renderList).join('')
