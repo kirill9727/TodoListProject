@@ -1,4 +1,4 @@
-import {addTodo, deleteTodo, TodoList} from "./todoListLogic";
+import Todolist from "./todoListLogic";
 
 
 
@@ -19,8 +19,8 @@ function renderList(listTodo) {
         </div>
     </div>`
 }
-export function drawListTodo() {
-    document.querySelector('.todoListFull').innerHTML = renderListTodo(TodoList)
+export const drawListTodo  = () => {
+    document.querySelector('.todoListFull').innerHTML = renderListTodo(Todolist.todos)
     initListTodo()
 }
 
@@ -31,7 +31,7 @@ function initListTodo () {
         const deleteBtn = item.querySelector('.delete')
         deleteBtn.addEventListener('click', () => {
             console.log(`удаляем id: ${id}`)
-            deleteTodo(id)
+            Todolist.remove(id)
             return drawListTodo()
         })
     }
@@ -46,7 +46,7 @@ export function initListTodoForm () {
         const title = titleInput.value
         const text = textInput.value
         console.log(`добавляем заголовок ${title}`, `добавляем текст ${text}`)
-        addTodo(title,text)
+        Todolist.add(title,text)
         drawListTodo()
     })
 }
@@ -65,6 +65,21 @@ const renderListTodo = (listTodo) => {
     return listTodo.map(renderList).join('')
 }
 //создание удаления дела на кнопку
+
+export const renderTest = () => {
+    const el = createElFormHtml('<button>кнопка</button>')//document.createElement('button')
+    //el.innerText = 'кнопка'
+    el.addEventListener('click', p => {
+        alert('testClicked')
+    })
+    return el
+}
+
+export const createElFormHtml = (html) => {
+    const el = document.createElement('div')
+    el.innerHTML = html
+    return el.children[0]
+}
 
 
 
